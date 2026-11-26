@@ -1,4 +1,4 @@
-// Convert a line to sentence case: capitalize sentence starts and lowercase other letters.
+// Convert a line to title case: capitalize the first letter of each word.
 #include <stdio.h>
 
 int main(void)
@@ -20,8 +20,11 @@ int main(void)
             }
             else if (ch >= 'A' && ch <= 'Z') text[i] = (char)(ch - 'A' + 'a');
         }
-        if (ch == '.' || ch == '!' || ch == '?') capitalize_next = 1;
+        else if (ch == ' ' || ch == '\t' || ch == '\n' || ch == '\r')
+        {
+            capitalize_next = 1;
+        }
     }
-    printf("Sentence case: %s", text);
+    printf("Title case: %s", text);
     return 0;
 }
